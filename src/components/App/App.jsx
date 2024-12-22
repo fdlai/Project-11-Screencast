@@ -12,8 +12,6 @@ import { defaultClothingItems } from "../../utils/clothingItems";
 const App = () => {
   const [weatherData, setWeatherData] = useState({
     city: "",
-    condition: "",
-    isDay: true,
     temp: { F: 999 },
     type: "",
   });
