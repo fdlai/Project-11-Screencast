@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 
 import "./Header.css";
 
@@ -34,6 +35,7 @@ const Header = ({ weatherData, handleAddClick }) => {
           isMobileMenuOpened ? "header__nav_opened" : ""
         }`}
       >
+        <ToggleSwitch />
         <button onClick={handleAddClick} className="header__add-button">
           + Add clothes
         </button>

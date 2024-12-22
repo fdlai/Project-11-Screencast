@@ -12,7 +12,7 @@ const Main = ({ weatherData, cards, onCardClick }) => {
         </p>
         <ul className="main__items">
           {cards
-            // .filter((card) => card.weather === weatherData.type)
+            .filter((card) => card.weather === weatherData.type)
             .map((filteredCard) => (
               <ItemCard
                 key={filteredCard._id}
