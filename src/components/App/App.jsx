@@ -7,7 +7,6 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 import { apiKey, location } from "../../utils/constants";
 import { filterWeatherData, getWeather } from "../../utils/weatherApi";
-import { defaultClothingItems } from "../../utils/clothingItems";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 
 const App = () => {
@@ -19,7 +18,6 @@ const App = () => {
     isDay: false,
   });
 
-  const [clothingItems, setClothingItems] = useState([]);
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState(null);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
@@ -49,10 +47,6 @@ const App = () => {
       .catch(console.error);
   }, []);
 
-  useEffect(() => {
-    setClothingItems(defaultClothingItems);
-  }, []);
-
   return (
     <CurrentTemperatureUnitContext.Provider
       value={{ currentTemperatureUnit, handleToggleSwitchChange }}
@@ -60,11 +54,7 @@ const App = () => {
       <div className="page">
         <div className="page__wrapper">
           <Header weatherData={weatherData} handleAddClick={handleAddClick} />
-          <Main
-            weatherData={weatherData}
-            cards={clothingItems}
-            onCardClick={handleCardClick}
-          />
+          <Main weatherData={weatherData} onCardClick={handleCardClick} />
           <Footer />
         </div>
         <ModalWithForm
@@ -107,7 +97,6 @@ const App = () => {
                 type="radio"
                 id="choiceHot"
                 name="weatherType"
-                value="hot"
               />
               <label className="modal__label_type_radio" htmlFor="choiceHot">
                 Hot
@@ -119,7 +108,6 @@ const App = () => {
                 type="radio"
                 id="choiceWarm"
                 name="weatherType"
-                value="warm"
               />
               <label className="modal__label_type_radio" htmlFor="choiceWarm">
                 Warm
@@ -131,7 +119,6 @@ const App = () => {
                 type="radio"
                 id="choiceCold"
                 name="weatherType"
-                value="cold"
               />
               <label className="modal__label_type_radio" htmlFor="choiceCold">
                 Cold
